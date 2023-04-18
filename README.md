@@ -1,5 +1,5 @@
 # Acronym Tracker
-In this version, data does not persist. There is no backend; instead React state is used to store acronyms.
+In this version, data does not persist. These source files implement React state to store acronyms.
 
 ## Features
 - view all acronyms
