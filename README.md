@@ -29,3 +29,4 @@ Tools required:
 - authentication
 - backend (NextJS, relational database)
 - delete existing acronym
+- sort acronyms alphabetically
