@@ -30,3 +30,4 @@ Tools required:
 - backend (NextJS, relational database)
 - delete existing acronym
 - sort acronyms alphabetically
+- add more than one acronym at a time
