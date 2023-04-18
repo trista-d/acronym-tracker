@@ -21,9 +21,9 @@ Tools required:
 
 ## Features
 #### View a demo video [here](#)
+- view all acronyms
 - search for an existing acronym
 - add a new acronym
-- view all acronyms
 
 ## Future Ideas
 - authentication
