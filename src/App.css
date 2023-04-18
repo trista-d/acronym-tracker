@@ -105,13 +105,35 @@ button[type=cancel]:hover {
   font-size: var(--subheading-size);
 }
 
-.message
-{
+#infodiv {
   font-size: var(--form-font-size);
-  color: var(--result-colour);
-  font-style: italic;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
 }
 
-.acro-list {
-  margin: 10px;
+#result {
+  color: var(--result-colour);
+  text-align: center;
+}
+
+.listItemContainer {
+  color: var(--headings-paragraphs);
+  margin-bottom:20px;
+  display: grid;
+}
+
+.acroList1 {
+  text-align: left;
+}
+
+.acroList2 {
+  grid-column-start: 2;
+  text-align: right;
+}
+
+.acroResult {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: inline;
 }

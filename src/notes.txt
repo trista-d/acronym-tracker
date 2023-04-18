@@ -1,3 +1,3 @@
 - npm install typography
 - npm i --save @bcgov/bc-sans
-- npm install typography-inject-fonts
+- npm install firebase

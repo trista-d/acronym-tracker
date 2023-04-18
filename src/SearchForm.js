@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
+
 /**
  * This component shows the search field and the search result if one is found. If a search has not
  * been executed yet, or if the user searched on an "empty" search term, it will list all of the
@@ -32,16 +33,17 @@ function SearchForm(props) {
 
   // Creates the list of acronyms for display
   const showAcronyms = () => {
-    let list = [];
+    let list = [<hr/>];
     let keys = [...props.acroMap.keys()];
     keys.sort();
     keys.map((k, i) =>
-      list.push(<div key={ k }>
-            <span className="acro-list">{ k }</span>
-            <span className="acro-list">{ props.acroMap.get(k) }</span>
-          </div>
+      list.push(<div key={ k } className="listItemContainer">
+            <div className="acroList1">{ k }</div>
+            <div className="acroList2">{ props.acroMap.get(k) }</div>
+          </div>,
+          <hr/>
       )
-    )
+    );
     return list;
   }
 
@@ -55,9 +57,9 @@ function SearchForm(props) {
     }
 
     return (
-      <div>
-        <span className="acro-list">{ msg.length === 0 || msg.localeCompare("Not Found") === 0 ? "" : result }</span>
-        <span className="acro-list">{ msg }</span>
+      <div id="result">
+        { msg.length === 0 || msg.localeCompare("Not Found") === 0 ? "" : <div className="acroResult">{result}</div> }
+        <div className="acroResult">{ msg }</div>
       </div>
     )
   }
@@ -87,7 +89,7 @@ function SearchForm(props) {
       <div className="acronym-subheading">
         Acronyms:
       </div>
-      <div className="message" id="infodiv">
+      <div id="infodiv">
         {  info  }
       </div>
     </div>

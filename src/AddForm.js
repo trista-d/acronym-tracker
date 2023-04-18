@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import { initializeApp } from "firebase/app";
 
 function AddForm(props) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -34,9 +35,6 @@ function AddForm(props) {
       <button type="submit" value="Submit" onClick={ handleSubmit }>Save</button>
       <button type="cancel" value="Cancel" onClick={ updateState }>Cancel</button>
     </div>
-    <label id="studentMsg" className="message">
-      { definition }
-    </label>
   </div>
   );
 }
