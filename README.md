@@ -20,7 +20,12 @@ Tools required:
 - SearchForm.js
 
 ## Features
+#### View a demo video [here](#)
+- search for an existing acronym
+- add a new acronym
+- view all acronyms
 
 ## Future Ideas
 - authentication
 - backend (NextJS, relational database)
+- delete existing acronym
