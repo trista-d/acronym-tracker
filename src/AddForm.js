@@ -1,15 +1,14 @@
 import { useState } from "react";
 import "./App.css";
-import { initializeApp } from "firebase/app";
+
 
 function AddForm(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [definition, setDefinition] = useState("");
 
   const handleSubmit = (event) => {
-    if (searchTerm.trim() !== "") {
+    if (searchTerm.trim() !== "" && definition.trim() !== "") {
       props.updateAcroMap(searchTerm.trim(), definition);
-      console.log(props.acroMap);
       props.updateAppState(0);
       event.preventDefault();
     }
