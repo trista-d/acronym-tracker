@@ -31,3 +31,4 @@ Tools required:
 - delete existing acronym
 - sort acronyms alphabetically
 - add more than one acronym at a time
+- currently, if an acornym is already in the database then when the same acronym is added, the old one is overwritten. Instead could not let a user replace an exisitng acronym
