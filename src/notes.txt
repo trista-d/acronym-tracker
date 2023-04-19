@@ -1,4 +1,0 @@
-- npm install typography
-- npm i --save @bcgov/bc-sans
-- npm install firebase
-- npm install -g firebase-tools
