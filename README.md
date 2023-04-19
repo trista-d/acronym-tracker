@@ -21,7 +21,7 @@ Tools required:
 
 ## Features
 #### View a demo video [here](#)
-- view all acronyms
+- view all acronyms in aplhabetical order
 - search for an existing acronym
 - add a new acronym
 
@@ -29,6 +29,6 @@ Tools required:
 - authentication
 - backend (NextJS, relational database)
 - delete existing acronym
-- sort acronyms alphabetically
+- sort acronyms alphabetically or by creation date
 - add more than one acronym at a time
 - currently, if an acornym is already in the database then when the same acronym is added, the old one is overwritten. Instead could not let a user replace an exisitng acronym
