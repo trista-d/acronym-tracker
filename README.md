@@ -1,11 +1,14 @@
 # Acronym Tracker
+The application is hosted [here](https://acronym-tracker.web.app/)
 
 ## Run Locally
 Tools required:
-- git
-- npm
-- React
-- Firebase
+- [Node.js](https://nodejs.org/en/download) and npm package manager
+
+1. Download or clone this repository
+2. In a terminal, nagivate inside the directory with the project files
+3. Run the command `npm install` to download the required dependencies
+4. Run `npm start` and visit localhost:3000 to view the application
 
 ## Files
 - index.js
