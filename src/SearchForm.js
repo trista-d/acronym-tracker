@@ -47,6 +47,9 @@ function SearchForm(props) {
       list.push(<div id={ k } className="listItemContainer">
             <div className="acroList1">{ k }</div>
             <div className="acroList2">{ props.acroMap.get(k) }</div>
+            <div className="deleteContainer">  
+              <button onClick={ () => {props.deleteAcronym(k)} } type="cancel">Delete</button>
+            </div>
           </div>,
           <hr/>
       )

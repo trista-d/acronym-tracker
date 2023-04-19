@@ -3,7 +3,7 @@ import './App.css';
 import SearchForm from './SearchForm';
 import AddForm from './AddForm';
 import { db } from "./firebase";
-import { ref, get } from "firebase/database";
+import { ref, get, remove } from "firebase/database";
 
 /**
  * This is the main component of the application that loads sub-components. It mains the overall
@@ -28,15 +28,18 @@ function App() {
 
   // Gets acronyms from database and save them to state
   const updateAcronymsList = () => {
-    // read from Firebase
+    // Read from Firebase
     get(ref(db)).then((snapshot) => {
-      let dbEntries = Object.entries(snapshot.val());
-      
-      // Get key-value pairs to put in map
-      for (let i = 0; i < dbEntries.length; i++) {
-        let keyAndVal = Object.values(dbEntries[i][1]);
-        if (keyAndVal.length > 0) {
-          updateAcroMap(keyAndVal[0], keyAndVal[1]);
+      if (snapshot.val() != null) {
+        let dbEntries = Object.entries(snapshot.val());
+
+        // Get key-value pairs to put in map
+        for (let i = 0; i < dbEntries.length; i++) {
+          let key = dbEntries[i][0];
+          let val = Object.values(dbEntries[i][1]);
+          if (key.length > 0) {
+            updateAcroMap(key, val[0]);
+          } 
         }
       }
       
@@ -47,10 +50,22 @@ function App() {
     });
   }
 
+  // Deletes an acronym from database and state
+  const deleteAcronym = (key) => {
+    if (key.length > 0) {
+      remove(ref(db, key));
+      acroMap.delete(key);
+
+      // Forces component to re-render
+      // Needed to prevent error from searching for a deleted key 
+      setRender(!forceRender);
+    }
+  }
+
   // Render the SearchForm component or AddForm component depending on the appState
   return (
     <div className="App">
-      { appState === 1 ? <AddForm acroMap={ acroMap } updateAcroMap={ updateAcroMap } appState={ appState } updateAppState={ updateAppState }/> : <SearchForm appState={ appState } acroMap={ acroMap } updateAcronymsList={ updateAcronymsList } updateAppState={ updateAppState }/> }
+      { appState === 1 ? <AddForm acroMap={ acroMap } updateAcroMap={ updateAcroMap } appState={ appState } updateAppState={ updateAppState }/> : <SearchForm appState={ appState } acroMap={ acroMap } updateAcronymsList={ updateAcronymsList } deleteAcronym={ deleteAcronym } updateAppState={ updateAppState }/> }
     </div>
   );
 }

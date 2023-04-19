@@ -121,6 +121,7 @@ button[type=cancel]:hover {
   color: var(--headings-paragraphs);
   margin-bottom:20px;
   display: grid;
+  align-items: center;
 }
 
 .acroList1 {
@@ -136,4 +137,16 @@ button[type=cancel]:hover {
   margin-left: 10px;
   margin-right: 10px;
   display: inline;
+}
+
+.deleteContainer {
+  grid-column-start: 3;
+  text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+  .deleteContainer button {
+    font-size: 70%;
+    padding: 10px;
+  }
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { db } from "./firebase";
-import { ref, push } from "firebase/database";
+import { ref, set } from "firebase/database";
 
 /**
  * This component shows the acronym and definition fields. If both of these fields are filled in
@@ -16,8 +16,7 @@ function AddForm(props) {
     let acro = searchTerm.trim();
 
     if (acro !== "" && definition.trim() !== "") {
-      push(ref(db), {
-        acronym: acro.toUpperCase(),
+      set(ref(db, acro.toUpperCase()),  {
         definition: definition
       });
 
