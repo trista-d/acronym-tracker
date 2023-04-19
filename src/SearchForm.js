@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
-
 
 /**
  * This component shows the search field and the search result if one is found. If a search has not
@@ -13,6 +12,16 @@ function SearchForm(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [result, setResult] = useState("");
 
+  // Update acronyms in state from database
+  // Note: when we expect to have a small number of acronyms it is ok to read the entire database each time but
+  //       in practical use when there is a large number of acronyms a better solution is to read the entire database 
+  //       once, store it in React's state, and update state whenever the database is updated (by only reading the new data).
+  //       We also would not want to display all the acronyms if there are too many of them, so could use paginiation or only 
+  //       read a portion of the database into state.
+  useEffect (() => {
+    props.updateAcronymsList();
+  }, [])
+
   // Sets the search term and updates the state to 0 ("show search form and results")
   const handleSubmit = (event) => {
     if (searchTerm.trim() === "") {
@@ -22,13 +31,11 @@ function SearchForm(props) {
       setResult(props.acroMap.has(searchTerm.trim().toUpperCase()) ? searchTerm.trim().toUpperCase() : "");
       props.updateAppState(2);
     }
-    //event.preventDefault(); // Not necessary because it's not a "submit" so full refresh won't occur anyway
   }
 
   // Sets the state to 1 ("add") so that the AddForm component shows
   const setStateToAdd = (event) => {
     props.updateAppState(1);
-    //event.preventDefault(); // Not necessary because it's not from a "submit" so full refresh won't occur anyway
   }
 
   // Creates the list of acronyms for display
@@ -37,7 +44,7 @@ function SearchForm(props) {
     let keys = [...props.acroMap.keys()];
     keys.sort();
     keys.map((k, i) =>
-      list.push(<div key={ k } className="listItemContainer">
+      list.push(<div id={ k } className="listItemContainer">
             <div className="acroList1">{ k }</div>
             <div className="acroList2">{ props.acroMap.get(k) }</div>
           </div>,
@@ -65,7 +72,7 @@ function SearchForm(props) {
   }
 
   // Determines whether to show search results or the list of acronyms based on the current state
-  let info;
+  let info = "";
   if (props.appState === 2) {
     info = showResult();
   } else if (props.appState === 0) {

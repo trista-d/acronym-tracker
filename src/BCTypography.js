@@ -1,3 +1,4 @@
+// font settings from the BC Design System
 import Typography from 'typography';
 import '@bcgov/bc-sans/css/BCSans.css';
 
